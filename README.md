@@ -6,7 +6,7 @@
 `TODO://` The App has two labels one with the question and the other for answer.
 
 ### App Walk-though
-<img src="https://recordit.co/4hBUtwF7CK" width=200><br>
+<img src="https://recordit.co/4hBUtwF7CK.gif" width=200><br>
 
 ## Required
 - [x] Create New Project in Xcode
