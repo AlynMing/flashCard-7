@@ -6,7 +6,7 @@
 `TODO://` The App has two labels one with the question and the other for answer.
 
 ### App Walk-though
-<img src="https://recordit.co/Wk5zteM6Zt" width=200><br>
+<img src="recordit.co/Wk5zteM6Zt" width=200><br>
 
 
 ## Required
