@@ -74,11 +74,13 @@ class ViewController: UIViewController {
  
     @IBAction func didTapOnCard(_ sender: Any) {
         
-        if(self.backLabel.isHidden == false){
+        if(self.backLabel.isHidden == true){
+            self.backLabel.isHidden = false
             self.frontLabel.isHidden = true
         }
         else{
-            self.backLabel.isHidden = false
+            self.backLabel.isHidden = true
+            self.frontLabel.isHidden = false
         }
     }
     
