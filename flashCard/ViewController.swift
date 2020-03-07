@@ -67,16 +67,18 @@ class ViewController: UIViewController {
         btnOption3.layer.borderWidth = 3.0
         btnOption3.layer.borderColor = #colorLiteral(red: 0.1749481857, green: 0.3859854341, blue: 0.2115238309, alpha: 1)
         
+        backLabel.isHidden = true
+        
     }
 
  
     @IBAction func didTapOnCard(_ sender: Any) {
-        frontLabel.isHidden = true;
-        if(self.frontLabel.isHidden == false){
+        
+        if(self.backLabel.isHidden == false){
             self.frontLabel.isHidden = true
         }
         else{
-            self.frontLabel.isHidden = false
+            self.backLabel.isHidden = false
         }
     }
     
@@ -111,8 +113,8 @@ class ViewController: UIViewController {
     
     func updateFlashCard(question:String, answer: String){
         
-        backLabel.text = question
-        frontLabel.text = answer
+        backLabel.text = answer
+        frontLabel.text = question
         
     }
 }
