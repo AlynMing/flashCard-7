@@ -69,14 +69,15 @@ class ViewController: UIViewController {
         
     }
 
-
+ 
     @IBAction func didTapOnCard(_ sender: Any) {
-//        if(self.frontLabel.isHidden == false){
-//            self.frontLabel.isHidden = true
-//        }
-//        else{
-//            self.frontLabel.isHidden = false
-//        }
+        frontLabel.isHidden = true;
+        if(self.frontLabel.isHidden == false){
+            self.frontLabel.isHidden = true
+        }
+        else{
+            self.frontLabel.isHidden = false
+        }
     }
     
     @IBAction func didTapOnbtnOption1(_ sender: Any) {
@@ -97,5 +98,23 @@ class ViewController: UIViewController {
     @IBAction func didTapOnbtnOption3(_ sender: Any) {
         self.frontLabel.isHidden = false
     }
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let creationController = navigationController.topViewController as! CreationViewController
+        creationController.flashcardsController = self
+
+    }
+    
+    func updateFlashCard(question:String, answer: String){
+        
+        backLabel.text = question
+        frontLabel.text = answer
+        
+    }
 }
+
 

@@ -79,6 +79,15 @@
                                     <action selector="didTapOnbtnOption3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WfN-AJ-U5T"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn2-wc-ZPJ">
+                                <rect key="frame" x="127" y="730" width="143" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <segue destination="YLi-XM-KCz" kind="presentation" id="N0S-if-x8Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -100,6 +109,74 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Creation View Controller-->
+        <scene sceneID="zXP-ct-08U">
+            <objects>
+                <viewController id="Fjh-AO-lsT" customClass="CreationViewController" customModule="flashCard" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rbC-Df-1Pl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U7G-VR-0XL">
+                                <rect key="frame" x="159" y="239" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1QM-AP-0Zt">
+                                <rect key="frame" x="159" y="383" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="goC-8q-onf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pTE-rV-4sG">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ow9-9F-9ag">
+                            <connections>
+                                <action selector="didTapOnCancel:" destination="Fjh-AO-lsT" id="EoF-q0-3KE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="plain" id="zUa-1a-69J">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dlt-s2-vQZ">
+                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="didTapOnDone:" destination="Fjh-AO-lsT" eventType="touchUpInside" id="2KO-Yd-Iyc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="answerTextField" destination="1QM-AP-0Zt" id="LIx-SB-puK"/>
+                        <outlet property="questionTextField" destination="U7G-VR-0XL" id="swm-kc-MUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYI-Iy-2r3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2192.753623188406" y="121.875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dyb-R8-w1J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YLi-XM-KCz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k6j-bY-jwB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fjh-AO-lsT" kind="relationship" relationship="rootViewController" id="34e-5A-GH2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoy-8w-6pK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282.608695652174" y="121.875"/>
         </scene>
     </scenes>
 </document>
