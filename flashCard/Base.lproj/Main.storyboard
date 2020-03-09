@@ -88,6 +88,14 @@
                                     <segue destination="YLi-XM-KCz" kind="presentation" id="N0S-if-x8Q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFm-48-unb">
+                                <rect key="frame" x="278" y="753" width="70" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="✏️"/>
+                                <connections>
+                                    <segue destination="YLi-XM-KCz" kind="presentation" identifier="EditSegue" id="rIx-ne-COk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -119,13 +127,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U7G-VR-0XL">
-                                <rect key="frame" x="159" y="239" width="97" height="34"/>
+                                <rect key="frame" x="159" y="283" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ExtraAnswer 1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Kd-as-rjp">
+                                <rect key="frame" x="159" y="501" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Extra Answer2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-G2-N4d">
+                                <rect key="frame" x="159" y="589" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1QM-AP-0Zt">
-                                <rect key="frame" x="159" y="383" width="97" height="34"/>
+                                <rect key="frame" x="159" y="404" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -152,6 +172,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ExtraAnswer1" destination="2Kd-as-rjp" id="zUz-Yi-hXL"/>
+                        <outlet property="ExtraAnswer2" destination="ZOm-G2-N4d" id="gof-yG-jvy"/>
                         <outlet property="answerTextField" destination="1QM-AP-0Zt" id="LIx-SB-puK"/>
                         <outlet property="questionTextField" destination="U7G-VR-0XL" id="swm-kc-MUw"/>
                     </connections>
@@ -179,4 +201,7 @@
             <point key="canvasLocation" x="1282.608695652174" y="121.875"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rIx-ne-COk"/>
+    </inferredMetricsTieBreakers>
 </document>

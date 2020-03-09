@@ -12,7 +12,20 @@ class CreationViewController: UIViewController {
     
     @IBOutlet weak var questionTextField: UITextField!
     
+    
+    
     @IBOutlet weak var answerTextField: UITextField!
+    
+    
+    @IBOutlet weak var ExtraAnswer1: UITextField!
+    
+    
+    @IBOutlet weak var ExtraAnswer2: UITextField!
+    
+    
+    
+    var initialQuestion: String?
+    var initialAnswer: String?
     
     var flashcardsController: ViewController!
 
@@ -20,6 +33,8 @@ class CreationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        questionTextField.text = initialQuestion
+        answerTextField.text = initialAnswer
     }
     
     @IBAction func didTapOnCancel(_ sender: Any) {
@@ -29,9 +44,26 @@ class CreationViewController: UIViewController {
        
         let questionText = questionTextField.text
         let answerText = answerTextField.text
-        flashcardsController.updateFlashCard(question: questionText!, answer: answerText!)
-        dismiss(animated: true);
         
+        let ExtraAnswer1Text = ExtraAnswer1.text
+        
+        let ExtraAnswer2Text  = ExtraAnswer2.text
+        
+        
+        
+        
+        //check if empty
+        if (questionText == nil || answerText == nil || questionText!.isEmpty || answerText!.isEmpty){
+            let alert = UIAlertController(title: "Missing text", message: "You need an answer", preferredStyle:.alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            present(alert, animated: true)
+            
+            alert.addAction(okAction)
+        }
+        else{
+        flashcardsController.updateFlashCard(question: questionText!, answer: answerText!, ExtraAnswer1: ExtraAnswer1Text!, ExtraAnswer2: ExtraAnswer2Text)
+        dismiss(animated: true);
+        }
     }
     
     /*

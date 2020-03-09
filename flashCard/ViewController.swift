@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+       
+    
         //rounded corners for the card holder
         Card.layer.cornerRadius = 20.0
         Card.clipsToBounds = true
@@ -90,17 +92,22 @@ class ViewController: UIViewController {
     
     
     @IBAction func didTapOnbtnOption2(_ sender: Any) {
-        if(self.frontLabel.isHidden == false){
+        if(self.backLabel.isHidden == true){
+            self.backLabel.isHidden = false
             self.frontLabel.isHidden = true
         }
         else{
+            self.backLabel.isHidden = true
             self.frontLabel.isHidden = false
         }
+        
     }
     
     
     @IBAction func didTapOnbtnOption3(_ sender: Any) {
         self.frontLabel.isHidden = false
+        
+        
     }
     
     
@@ -110,13 +117,21 @@ class ViewController: UIViewController {
         let navigationController = segue.destination as! UINavigationController
         let creationController = navigationController.topViewController as! CreationViewController
         creationController.flashcardsController = self
-
+        if(segue.identifier == "EditSegue"){
+        creationController.initialQuestion = frontLabel.text
+        creationController.initialAnswer = backLabel.text
+        }
     }
     
-    func updateFlashCard(question:String, answer: String){
+    
+    func updateFlashCard(question:String, answer: String, ExtraAnswer1: String?, ExtraAnswer2: String?){
         
         backLabel.text = answer
         frontLabel.text = question
+        
+        btnOption1.setTitle(ExtraAnswer1, for: .normal)
+        btnOption2.setTitle(answer, for: .normal)
+        btnOption3.setTitle(ExtraAnswer2, for: .normal)
         
     }
 }
