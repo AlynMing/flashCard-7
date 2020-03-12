@@ -45,9 +45,9 @@ class CreationViewController: UIViewController {
         let questionText = questionTextField.text
         let answerText = answerTextField.text
         
-        let ExtraAnswer1Text = ExtraAnswer1.text
-        
-        let ExtraAnswer2Text  = ExtraAnswer2.text
+//        let ExtraAnswer1Text = ExtraAnswer1.text
+//
+//       let ExtraAnswer2Text  = ExtraAnswer2.text
         
         
         
@@ -61,7 +61,8 @@ class CreationViewController: UIViewController {
             alert.addAction(okAction)
         }
         else{
-        flashcardsController.updateFlashCard(question: questionText!, answer: answerText!, ExtraAnswer1: ExtraAnswer1Text!, ExtraAnswer2: ExtraAnswer2Text)
+        flashcardsController.updateFlashCard(question: questionText!, answer: answerText!)
+//            , ExtraAnswer1: ExtraAnswer1Text!, ExtraAnswer2: ExtraAnswer2Text)
         dismiss(animated: true);
         }
     }
