@@ -28,13 +28,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who is known as Father Zimbabwe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DV-jw-hBX">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="76"/>
+                                        <rect key="frame" x="0.0" y="-8" width="327" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.1326842157" green="0.73013597699999999" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stp-zp-oxa">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="❌"/>
+                                        <connections>
+                                            <action selector="didTapOnDelete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4YC-YO-zmt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
@@ -123,6 +132,7 @@
                         <outlet property="btnOption1" destination="DOB-wc-Sbj" id="vgN-Mg-2Yo"/>
                         <outlet property="btnOption2" destination="KAw-cN-61Y" id="fU6-Gw-2al"/>
                         <outlet property="btnOption3" destination="gmL-Cw-xHO" id="AOJ-4E-sX6"/>
+                        <outlet property="deleteButton" destination="stp-zp-oxa" id="LmO-li-Ojx"/>
                         <outlet property="frontLabel" destination="6DV-jw-hBX" id="rPw-Rq-IFp"/>
                         <outlet property="nextButton" destination="hlu-Kc-xSV" id="pL5-uZ-ChX"/>
                         <outlet property="prevButton" destination="KbX-Jg-ptt" id="itb-7g-gGk"/>

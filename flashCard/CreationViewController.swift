@@ -22,13 +22,11 @@ class CreationViewController: UIViewController {
     
     @IBOutlet weak var ExtraAnswer2: UITextField!
     
-    
-    
     var initialQuestion: String?
     var initialAnswer: String?
     
     var flashcardsController: ViewController!
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,14 +38,13 @@ class CreationViewController: UIViewController {
     @IBAction func didTapOnCancel(_ sender: Any) {
         dismiss(animated: true);
     }
+    
     @IBAction func didTapOnDone(_ sender: Any) {
        
         let questionText = questionTextField.text
         let answerText = answerTextField.text
-        
-//        let ExtraAnswer1Text = ExtraAnswer1.text
-//
-//       let ExtraAnswer2Text  = ExtraAnswer2.text
+        let ExtraAnswer1Text = ExtraAnswer1.text ?? ""
+        let ExtraAnswer2Text  = ExtraAnswer2.text  ?? ""
         
         
         
@@ -61,21 +58,28 @@ class CreationViewController: UIViewController {
             alert.addAction(okAction)
         }
         else{
-        flashcardsController.updateFlashCard(question: questionText!, answer: answerText!)
-//            , ExtraAnswer1: ExtraAnswer1Text!, ExtraAnswer2: ExtraAnswer2Text)
+            
+            var isExisting = false
+            if initialQuestion != nil{
+               isExisting = true
+            }
+            
+             flashcardsController.updateFlashCard(question: questionText!, answer: answerText!,
+                                                  isExisting: isExisting,ExtraAnswer1: ExtraAnswer1Text, ExtraAnswer2: ExtraAnswer2Text)
         dismiss(animated: true);
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    let navigationController = segue.destination as! UINavigationController
+    let creationController = navigationController.topViewController as! CreationViewController
+
     }
-    */
 
 }
+
 
