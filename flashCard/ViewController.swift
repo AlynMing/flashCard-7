@@ -44,12 +44,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         //read saved flashcards
         readSavedFlashcards()
         
-        //adding our initial flash card if needed
+        //adding initial flash card if needed
         if flashcards.count == 0 {
             updateFlashCard(question: "Lead is an element is which group?", answer: "Group 14", isExisting: true, ExtraAnswer1: "Group 4", ExtraAnswer2: "Group 8")
         }
@@ -59,8 +57,6 @@ class ViewController: UIViewController {
             updateNextPrevButtons()
         }
        
-//        updateFlashCard(question: "What is the first element in the periodic table", answer:"Hydrogen", isExisting: false, ExtraAnswer1: "Helium", ExtraAnswer2: "Oxygen")
-//
         //rounded corners for the card holder
         Card.layer.cornerRadius = 20.0
         Card.clipsToBounds = true
@@ -81,6 +77,7 @@ class ViewController: UIViewController {
         btnOption1.layer.borderWidth = 3.0
         btnOption1.layer.borderColor = #colorLiteral(red: 0.1749481857, green: 0.3859854341, blue: 0.2115238309, alpha: 1)
         
+        //rounded corner for the option 1 button
         btnOption1.layer.cornerRadius = 20.0
         btnOption1.clipsToBounds = true
         btnOption1.layer.shadowRadius = 15.0
@@ -88,6 +85,7 @@ class ViewController: UIViewController {
         btnOption2.layer.borderWidth = 3.0
         btnOption2.layer.borderColor = #colorLiteral(red: 0.1749481857, green: 0.3859854341, blue: 0.2115238309, alpha: 1)
          
+        //rounded corner for the option 2 button
         btnOption2.layer.cornerRadius = 20.0
         btnOption2.clipsToBounds = true
         btnOption2.layer.shadowRadius = 15.0
@@ -95,6 +93,7 @@ class ViewController: UIViewController {
         btnOption2.layer.borderWidth = 3.0
         btnOption2.layer.borderColor = #colorLiteral(red: 0.1749481857, green: 0.3859854341, blue: 0.2115238309, alpha: 1)
         
+        //rounded corner for the option 3 button
         btnOption3.layer.cornerRadius = 20.0
         btnOption3.clipsToBounds = true
         btnOption3.layer.shadowRadius = 15.0
@@ -102,27 +101,51 @@ class ViewController: UIViewController {
         btnOption3.layer.borderWidth = 3.0
         btnOption3.layer.borderColor = #colorLiteral(red: 0.1749481857, green: 0.3859854341, blue: 0.2115238309, alpha: 1)
         
+        //hide the back label
         backLabel.isHidden = true
         
     }
 
  
     @IBAction func didTapOnCard(_ sender: Any) {
-        
-        if(self.backLabel.isHidden == true){
-            self.backLabel.isHidden = false
-            self.frontLabel.isHidden = true
-        }
-        else{
-            self.backLabel.isHidden = true
-            self.frontLabel.isHidden = false
+      flipFlashcard()//flip the card when the card is tapped on
+    }
+    //function to enable the card to flip
+    func flipFlashcard() {
+        UIView.transition(with: Card, duration: 0.3, options: .transitionFlipFromRight, animations: {
+            if(self.backLabel.isHidden == true){
+                self.backLabel.isHidden = false
+                self.frontLabel.isHidden = true
+            }
+            else{
+                self.backLabel.isHidden = true
+                self.frontLabel.isHidden = false
+            }
+        })
+    }
+    
+    func animatedCardOut(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.Card.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+            
+        }, completion: {finished in
+            self.animateCardIn()
+            
+            //update labels
+            self.updateLabels()
+        })
+    }
+    
+    func animateCardIn(){
+        UIView.animate(withDuration: 0.3) {
+            self.Card.transform = CGAffineTransform.identity
         }
     }
+    
     
     @IBAction func didTapOnbtnOption1(_ sender: Any) {
         self.frontLabel.isHidden = false
     }
-    
     
     @IBAction func didTapOnbtnOption2(_ sender: Any) {
         if(self.backLabel.isHidden == true){
@@ -133,37 +156,33 @@ class ViewController: UIViewController {
             self.backLabel.isHidden = true
             self.frontLabel.isHidden = false
         }
-        
     }
-    
     
     @IBAction func didTapOnbtnOption3(_ sender: Any) {
         self.frontLabel.isHidden = false
     }
     
-    
-   
     @IBAction func didTapOnPrev(_ sender: Any) {
        //decrease  current index
         currentIndex = currentIndex - 1
         
-        //update labels
+//      //update labels
         updateLabels()
         
         //update buttons
         updateNextPrevButtons()
         
+        animatedCardOut()
     }
     
     @IBAction func didTapOnNext(_ sender: Any) {
         //increase current index
         currentIndex = currentIndex + 1
         
-        //update labels
-        updateLabels()
-        
         //update buttons
         updateNextPrevButtons()
+        
+        animatedCardOut()
     }
     
     
@@ -172,18 +191,15 @@ class ViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {action in self.deleteCurrentFlashcard()}
         alert.addAction(deleteAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel )
-        
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
-    
     
     func deleteCurrentFlashcard(){
         //delete current
         flashcards.remove(at: currentIndex)
         
         //special case: check if the last card was deleted
-        
         if currentIndex > flashcards.count - 1{
             currentIndex = flashcards.count - 1
         }
@@ -209,9 +225,6 @@ class ViewController: UIViewController {
     
     
     func updateFlashCard(question:String, answer: String, isExisting: Bool, ExtraAnswer1: String, ExtraAnswer2: String){
-        
-       
-        
         let flashcard = Flashcard(question: question, answer: answer, ExtraAnswer1: ExtraAnswer1, ExtraAnswer2: ExtraAnswer2)
         //adding flashcard in the flashcards array
         
@@ -236,11 +249,9 @@ class ViewController: UIViewController {
         
         saveAllFlashcardsToDisk()
         
-      
         btnOption1.setTitle(ExtraAnswer1, for: .normal)
         btnOption2.setTitle(answer, for: .normal)
         btnOption3.setTitle(ExtraAnswer2, for: .normal)
-        
         
     }
     
@@ -251,20 +262,27 @@ class ViewController: UIViewController {
         
         backLabel.text = currentFlashcard.answer
         frontLabel.text = currentFlashcard.question
+        btnOption1.setTitle(currentFlashcard.ExtraAnswer1, for: .normal)
+        btnOption2.setTitle(currentFlashcard.answer, for: .normal)
+        btnOption3.setTitle(currentFlashcard.ExtraAnswer2, for: .normal)
     }
     func updateNextPrevButtons(){
-               //disable next button if at the end
-               if currentIndex == flashcards.count - 1{
-                   nextButton.isEnabled = false
-               }else{
-                   nextButton.isEnabled = true
-               }
+        //disable next button if at the end
+        if currentIndex == flashcards.count - 1{
+            nextButton.isEnabled = false
+        }else{
+            nextButton.isEnabled = true
+        }
                
-               //disable prev button if at the begininning
-           }
+        //disable prev button if at the begininning
+        if currentIndex == 0 {
+            prevButton.isEnabled = false
+        }else{
+            prevButton.isEnabled = true
+        }
+    }
     
     func saveAllFlashcardsToDisk(){
-        
         //from flashcard array to dictionary array
         let dictionaryArray = flashcards.map { (card) -> [String:String] in
             return["question": card.question, "answer":card.answer, "ExtraAnswer1":card.ExtraAnswer1, "ExtraAnswer2": card.ExtraAnswer2]
@@ -272,7 +290,6 @@ class ViewController: UIViewController {
         
         // save array on disk using userDefaults
         UserDefaults.standard.set(dictionaryArray, forKey: "flashcards")
-//            flashcards, forKey: "flashcards")
         print(" Flashcards saved to userDefaults")
     }
     
